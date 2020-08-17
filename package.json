@@ -1,0 +1,20 @@
+{
+  "name": "smarttable",
+  "version": "0.1.0",
+  "description": "The goal of this project is to provide a smart html table.",
+  "main": "",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andresg9108/smarttable.git"
+  },
+  "author": "Andres Gonzalez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andresg9108/smarttable/issues"
+  },
+  "homepage": "https://github.com/andresg9108/smarttable#readme",
+  "dependencies": {
+    "jquery": "^3.5.1"
+  }
+}
