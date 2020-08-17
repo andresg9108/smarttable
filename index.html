@@ -1,9 +1,58 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
-		<title>¡Hello World!</title>
+		<title>Smart table</title>
+
+		<script src="node_modules/jquery/dist/jquery.min.js"></script>
+		<script src="dist/main.min.js"></script>
 	</head>
 	<body>
-		<h1>¡Hello World!</h1>
+		
+		<table id="table1" border="5">
+			<tr>
+				<th colspan="3">Example #1</th>
+			</tr>
+			<tr data-type="title">
+				<th data-id="name">Name</th>
+				<th data-id="lastname">Last Name</th>
+				<th data-id="phone">Phone</th>
+			</tr>
+			<tr data-type="data">
+				<td>Pepe</td>
+				<td>Diaz</td>
+				<td>123</td>
+			</tr>
+			<tr data-type="data">
+				<td>Carlos</td>
+				<td>Carvajal</td>
+				<td>456</td>
+			</tr>
+			<tr data-type="data">
+				<td>Felipe</td>
+				<td>Hidalgo</td>
+				<td>789</td>
+			</tr>
+		</table>
+
+		<br /><br />
+
+		<table id="table2" border="5">
+			<tr>
+				<th colspan="4">Example #2</th>
+			</tr>
+			<tr data-type="title">
+				<th data-id="data1">Data #1</th>
+				<th data-id="data2">Data #2</th>
+				<th data-id="data3">Data #3</th>
+				<th data-id="data4">Data #4</th>
+			</tr>
+			<tr data-type="data">
+				<td>11</td>
+				<td>22</td>
+				<td>33</td>
+				<td>44</td>
+			</tr>
+		</table>
+
 	</body>
 </html>
