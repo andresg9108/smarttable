@@ -13,62 +13,73 @@
 				<th colspan="5">Example #1</th>
 			</tr>
 			<tr data-type="title">
-				<th>Space</th>
+				<th></th>
 				<th data-id="type">Type</th>
 				<th data-id="name">Name</th>
 				<th data-id="lastname">Last Name</th>
 				<th data-id="phone">Phone</th>
 			</tr>
 			<tr data-type="data">
-				<td data-ignorefield="true"></td>
-				<td>2</td>
-				<td>Pepe</td>
-				<td>Diaz</td>
-				<td>123</td>
+				<td data-ignorefield="true">
+					<a href="#">Delete</a>
+				</td>
+				<td data-input="select">
+					<select>
+						<option value="0">Select a type</option>
+						<option value="1">1</option>
+						<option value="2" selected>2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+					</select>
+				</td>
+				<td data-input="text"><input type="text" placeholder="Name" value="Pepe" /></td>
+				<td data-input="text"><input type="text" placeholder="Last name" value="Diaz" /></td>
+				<td data-input="text"><input type="text" placeholder="Phone" value="123" /></td>
 			</tr>
 			<tr data-type="data">
-				<td data-ignorefield="true"></td>
-				<td>1</td>
-				<td>Carlos</td>
-				<td>Carvajal</td>
-				<td>456</td>
-			</tr>
-			<tr data-type="data">
-				<td data-ignorefield="true"></td>
-				<td>3</td>
-				<td>Felipe</td>
-				<td>Hidalgo</td>
-				<td>789</td>
-			</tr>
-			<tr data-type="data">
-				<td data-ignorefield="true"></td>
-				<td>1</td>
-				<td>Camilo</td>
-				<td>Gutierrez</td>
-				<td>101112</td>
-			</tr>
-			<tr data-type="data">
-				<td data-ignorefield="true"></td>
-				<td>2</td>
-				<td>Daniela</td>
-				<td>Gonzalez</td>
-				<td>131415</td>
-			</tr>
-			<tr data-type="input">
-				<td></td>
-				<td data-inputtype="select">
+				<td data-ignorefield="true">
+					<a href="#">Delete</a>
+				</td>
+				<td data-input="select">
 					<select>
 						<option value="0">Select a type</option>
 						<option value="1">1</option>
 						<option value="2">2</option>
 						<option value="3">3</option>
 						<option value="4">4</option>
-						<option value="5">5</option>
+						<option value="5" selected>5</option>
 					</select>
 				</td>
-				<td data-inputtype="text"><input type="text" placeholder="Name" /></td>
-				<td data-inputtype="text"><input type="text" placeholder="Last name" /></td>
-				<td data-inputtype="text"><input type="text" placeholder="Phone" /></td>
+				<td data-input="text"><input type="text" placeholder="Name" value="Felipe" /></td>
+				<td data-input="text"><input type="text" placeholder="Last name" value="Carvajal" /></td>
+				<td data-input="text"><input type="text" placeholder="Phone" value="582" /></td>
+			</tr>
+			<tr id="tableinputs">
+				<td colspan="5">
+					<table>
+						<tr>
+							<td data-input="ignorefield" style="display: none;">
+								<a href="#">Delete</a>
+							</td>
+							<td data-input="select">
+								<select>
+									<option value="0">Select a type</option>
+									<option value="1">1</option>
+									<option value="2">2</option>
+									<option value="3">3</option>
+									<option value="4">4</option>
+									<option value="5">5</option>
+								</select>
+							</td>
+							<td data-input="text"><input type="text" placeholder="Name" /></td>
+						</tr>
+						<tr>
+							<td data-input="text"><input type="text" placeholder="Last name" /></td>
+							<td data-input="text"><input type="text" placeholder="Phone" /></td>
+						</tr>
+					</table>
+				</td>
 			</tr>
 		</table>
 
@@ -85,24 +96,42 @@
 				<th data-id="data4">Data #4</th>
 			</tr>
 			<tr data-type="data">
-				<td>11</td>
-				<td>22</td>
-				<td>33</td>
-				<td>44</td>
+				<td data-input="text"><input type="text" placeholder="Data #1" value="11" /></td>
+				<td data-input="text"><input type="text" placeholder="Data #2" value="22" /></td>
+				<td data-input="text"><input type="text" placeholder="Data #3" value="33" /></td>
+				<td data-input="text"><input type="text" placeholder="Data #4" value="44" /></td>
 			</tr>
 			<tr data-type="data">
-				<td>55</td>
-				<td>66</td>
-				<td>77</td>
-				<td>88</td>
+				<td data-input="text"><input type="text" placeholder="Data #1" value="55" /></td>
+				<td data-input="text"><input type="text" placeholder="Data #2" value="66" /></td>
+				<td data-input="text"><input type="text" placeholder="Data #3" value="77" /></td>
+				<td data-input="text"><input type="text" placeholder="Data #4" value="88" /></td>
 			</tr>
 			<tr data-type="data">
-				<td>99</td>
-				<td>1010</td>
-				<td>1111</td>
-				<td>1212</td>
+				<td data-input="text"><input type="text" placeholder="Data #1" value="99" /></td>
+				<td data-input="text"><input type="text" placeholder="Data #2" value="1010" /></td>
+				<td data-input="text"><input type="text" placeholder="Data #3" value="1111" /></td>
+				<td data-input="text"><input type="text" placeholder="Data #4" value="1212" /></td>
+			</tr>
+			<tr id="tableinputs">
+				<td colspan="4">
+					<table>
+						<tr>
+							<td data-input="text"><input type="text" placeholder="Data #1" /></td>
+							<td data-input="text"><input type="text" placeholder="Data #2" /></td>
+							<td data-input="text"><input type="text" placeholder="Data #3" /></td>
+							<td data-input="text"><input type="text" placeholder="Data #4" /></td>
+						</tr>
+					</table>
+				</td>
 			</tr>
 		</table>
-
 	</body>
 </html>
+
+<script>
+
+oSmartTableAg.setEventsFromTable('#table1');
+oSmartTableAg.setEventsFromTable('#table2');
+
+</script>
