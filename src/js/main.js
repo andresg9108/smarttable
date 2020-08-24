@@ -15,6 +15,14 @@ oSmartTableAg.setEventsFromTable = function(sTag){
 			}
 		});
 	});
+
+	$.each($(sTag).find('tr'), function(i, v){
+		if($(v).attr('data-type') == 'data'){
+			$(v).find('#delete').on('click', function(){
+				$(v).remove();
+			});
+		}
+	});
 }
 
 /*
