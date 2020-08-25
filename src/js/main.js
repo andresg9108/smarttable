@@ -35,9 +35,9 @@ oSmartTableAg.add = function(sTag){
 
 		if(typeof sInput !== "undefined"){
 			if(sInput == 'text'){
-				sRow += '<td data-input="text"><input type="text" value="' + $(v).find('input').val() + '" placeholder="' + $(v).find('input').attr('placeholder') + '" /></td>';
+				sRow += '<td data-input="text"><input type="text" value="' + $(v).find('input').val() + '" placeholder="' + $(v).find('input').attr('placeholder') + '" class="' + $(v).find('input').attr('data-class') + '" /></td>';
 			}else if(sInput == 'select'){
-				sRow += '<td data-input="select"><select>';
+				sRow += '<td data-input="select"><select class="' + $(v).find('select').attr('data-class') + '">';
 
 				$.each($(v).find('option'), function(i2, v2){
 					if($(v).find('select').val() == $(v2).val()){
