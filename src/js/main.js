@@ -69,6 +69,7 @@ oSmartTableAg.getArrayFromTable = function(sTag){
 	
 	$.each($(sTag).find("tr"), function(i, v){
 		if($(v).attr("data-type") == "data"){
+			var iIdData = $(v).attr("data-id");
 			var oObject = oSmartTableAg.getObjectFromTable(sTag);
 			var aResponse = [];
 
@@ -89,6 +90,7 @@ oSmartTableAg.getArrayFromTable = function(sTag){
 				oObject[i2] = aResponse[iIndex];
 				iIndex++;
 			});
+			oObject.data_id = (typeof iIdData !== "undefined") ? iIdData : "";
 
 			aArray.push(oObject);
 		}
