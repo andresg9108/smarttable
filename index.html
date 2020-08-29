@@ -18,6 +18,8 @@
 				<th data-id="name">Name</th>
 				<th data-id="lastname">Last Name</th>
 				<th data-id="phone">Phone</th>
+				<th data-id="myradio">My Radio</th>
+				<th data-id="mycheck">My Check</th>
 			</tr>
 			<tr data-id="1" data-type="data">
 				<td data-ignorefield="true">
@@ -38,6 +40,8 @@
 				<td data-input="text"><input type="text" placeholder="Name" value="Pepe" /></td>
 				<td data-input="text"><input type="text" placeholder="Last name" value="Diaz" /></td>
 				<td data-input="text"><input type="text" placeholder="Phone" value="123" /></td>
+				<td data-input="radio"><input type="radio" id="myradio" name="myradio" /></td>
+				<td data-input="checkbox"><input type="checkbox" /></td>
 			</tr>
 			<tr data-id="2" data-type="data">
 				<td data-ignorefield="true">
@@ -58,6 +62,8 @@
 				<td data-input="text"><input type="text" placeholder="Name" value="Felipe" /></td>
 				<td data-input="text"><input type="text" placeholder="Last name" value="Carvajal" /></td>
 				<td data-input="text"><input type="text" placeholder="Phone" value="582" /></td>
+				<td data-input="radio"><input type="radio" id="myradio" name="myradio" checked/></td>
+				<td data-input="checkbox"><input type="checkbox" /></td>
 			</tr>
 			<tr id="tableinputs">
 				<td colspan="5">
@@ -88,6 +94,14 @@
 						<tr>
 							<td data-input="text"><input type="text" placeholder="Last name" class="" data-class="" /></td>
 							<td data-input="text"><input type="text" placeholder="Phone" class="" data-class="" /></td>
+						</tr>
+						<tr style="display: none;">
+							<td data-input="radio">
+								<input type="radio" id="myradio" name="myradio" />
+							</td>
+							<td data-input="checkbox">
+								<input type="checkbox" />
+							</td>
 						</tr>
 						<tr>
 							<td colspan="2">

@@ -48,6 +48,10 @@ oSmartTableAg.add = function(sTag){
 				});
 
 				sRow += '</select></td>';
+			}else if(sInput == 'radio'){
+				sRow += '<td data-input="radio">' + $(v).html() + '</td>'
+			}else if(sInput == 'checkbox'){
+				sRow += '<td data-input="checkbox">' + $(v).html() + '</td>'
 			}else if(sInput == 'ignorefield'){
 				sRow += '<td data-ignorefield="true">' + $(v).html() + '</td>'
 			}
@@ -79,6 +83,8 @@ oSmartTableAg.getArrayFromTable = function(sTag){
 						aResponse.push($(v2).find('input').val());
 					}else if($(v2).attr('data-input') == 'select'){
 						aResponse.push($(v2).find('select').val());
+					}else if($(v2).attr('data-input') == 'checkbox' || $(v2).attr('data-input') == 'radio'){
+						aResponse.push($(v2).find('input').is(':checked'));
 					}else{
 						aResponse.push($(v2).text());
 					}
