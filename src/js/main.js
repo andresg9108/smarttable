@@ -8,14 +8,6 @@ $(function(){
 /*
 */
 oSmartTableAg.setEventsFromTable = function(sTag){
-	$.each($(sTag).find('#tableinputs').find('table').find('td'), function(i, v){
-		$(v).find('input').keypress(function(e) {
-			if(e.which == 13) {
-				oSmartTableAg.add(sTag);
-			}
-		});
-	});
-
 	$.each($(sTag).find('tr'), function(i, v){
 		if($(v).attr('data-type') == 'data'){
 			$(v).find('#delete').on('click', function(){
@@ -34,26 +26,10 @@ oSmartTableAg.add = function(sTag){
 		var sInput = $(v).attr('data-input');
 
 		if(typeof sInput !== "undefined"){
-			if(sInput == 'text'){
-				sRow += '<td data-input="text"><input type="text" value="' + $(v).find('input').val() + '" placeholder="' + $(v).find('input').attr('placeholder') + '" class="' + $(v).find('input').attr('data-class') + '" /></td>';
-			}else if(sInput == 'select'){
-				sRow += '<td data-input="select"><select class="' + $(v).find('select').attr('data-class') + '">';
-
-				$.each($(v).find('option'), function(i2, v2){
-					if($(v).find('select').val() == $(v2).val()){
-						sRow += '<option value="' + $(v2).val() + '" selected>' + $(v2).text() + '</option>';
-					}else{
-						sRow += '<option value="' + $(v2).val() + '">' + $(v2).text() + '</option>';
-					}
-				});
-
-				sRow += '</select></td>';
-			}else if(sInput == 'radio'){
-				sRow += '<td data-input="radio">' + $(v).html() + '</td>'
-			}else if(sInput == 'checkbox'){
-				sRow += '<td data-input="checkbox">' + $(v).html() + '</td>'
-			}else if(sInput == 'ignorefield'){
-				sRow += '<td data-ignorefield="true">' + $(v).html() + '</td>'
+			if(sInput == 'ignorefield'){
+				sRow += '<td data-ignorefield="true">' + $(v).html() + '</td>';
+			}else{
+				sRow += '<td data-input="' + sInput + '">' + $(v).html() + '</td>';
 			}
 		}
 	});
