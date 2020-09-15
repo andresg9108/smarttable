@@ -60,7 +60,7 @@ oSmartTableAg.getArrayFromTable = function(sTag){
 					}else if($(v2).attr('data-input') == 'select'){
 						aResponse.push($(v2).find('select').val());
 					}else if($(v2).attr('data-input') == 'checkbox' || $(v2).attr('data-input') == 'radio'){
-						aResponse.push($(v2).find('input').is(':checked'));
+						aResponse.push($(v2).find('input').is(':checked') ? 1 : 0);
 					}else{
 						aResponse.push($(v2).text());
 					}
