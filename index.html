@@ -9,16 +9,9 @@
 		<script src="dist/main.min.js"></script>
 	</head>
 	<body>
-
-
-
-
 		<table id="table1" border="2" style="border: 2px solid;" cellspacing=1>
 			<tr>
 				<th colspan="7">
-					<button type="button" onclick="oSmartTableAg.add('#table1')">
-						Save
-					</button>
 					Example #1
 				</th>
 			</tr>
@@ -31,169 +24,73 @@
 				<th data-id="myradio">My Radio</th>
 				<th data-id="mycheck">My Check</th>
 			</tr>
-			<tr data-id="1" data-type="data">
+			<tr data-type="data" data-id="1">
 				<td data-ignorefield="true">
-					<button id="delete">
+					<button type="button" id="delete">
 						Delete
 					</button>
 				</td>
 				<td data-input="select">
-					<select>
+					<select class="">
 						<option value="0">Select a type</option>
 						<option value="1">1</option>
-						<option value="2" selected>2</option>
-						<option value="3">3</option>
+						<option value="2">2</option>
+						<option value="3" selected>3</option>
 						<option value="4">4</option>
 						<option value="5">5</option>
 					</select>
 				</td>
 				<td data-input="text"><input type="text" placeholder="Name" value="Pepe" autocomplete="off" /></td>
-				<td data-input="text"><input type="text" placeholder="Last name" value="Diaz" autocomplete="off" /></td>
+				<td data-input="text"><input type="text" placeholder="Last name" value="Carvajal" autocomplete="off" /></td>
 				<td data-input="text"><input type="text" placeholder="Phone" value="123" autocomplete="off" /></td>
-				<td data-input="radio"><input type="radio" id="myradio" name="myradio" /></td>
-				<td data-input="checkbox"><input type="checkbox" /></td>
+				<td data-input="radio">
+					<input type="radio" id="myradio" name="myradio" checked/>
+				</td>
+				<td data-input="checkbox">
+					<input type="checkbox" />
+				</td>
 			</tr>
-			<tr data-id="2" data-type="data">
+		</table>
+
+		<br /><br />
+		<button type="button" onclick="oSmartTableAg.add('#table1', '#table1fields')">
+			Add
+		</button>
+
+		<br /><br /><br /><br />
+		<table id="table1fields" style="display: none;">
+			<tr data-type="data">
 				<td data-ignorefield="true">
-					<button id="delete">
+					<button type="button" id="delete">
 						Delete
 					</button>
 				</td>
 				<td data-input="select">
-					<select>
+					<select class="">
 						<option value="0">Select a type</option>
 						<option value="1">1</option>
 						<option value="2">2</option>
 						<option value="3">3</option>
-						<option value="4" selected>4</option>
+						<option value="4">4</option>
 						<option value="5">5</option>
 					</select>
 				</td>
-				<td data-input="text"><input type="text" placeholder="Name" value="Carlos" autocomplete="off" /></td>
-				<td data-input="text"><input type="text" placeholder="Last name" value="Hidalgo" autocomplete="off" /></td>
-				<td data-input="text"><input type="text" placeholder="Phone" value="456" autocomplete="off" /></td>
-				<td data-input="radio"><input type="radio" id="myradio" name="myradio" checked/></td>
-				<td data-input="checkbox"><input type="checkbox" /></td>
-			</tr>
-			<tr id="tableinputs" style="display: none;">
-				<td colspan="5">
-					<table>
-						<tr>
-							<td data-input="ignorefield">
-								<button id="delete">
-									Delete
-								</button>
-							</td>
-							<td data-input="select">
-								<select class="">
-									<option value="0">Select a type</option>
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-									<option value="5">5</option>
-								</select>
-							</td>
-							<td data-input="text"><input type="text" placeholder="Name" class="" autocomplete="off" /></td>
-							<td data-input="text"><input type="text" placeholder="Last name" class="" autocomplete="off" /></td>
-							<td data-input="text"><input type="text" placeholder="Phone" class="" autocomplete="off" /></td>
-							<td data-input="radio">
-								<input type="radio" id="myradio" name="myradio" />
-							</td>
-							<td data-input="checkbox">
-								<input type="checkbox" />
-							</td>
-						</tr>
-					</table>
+				<td data-input="text"><input type="text" placeholder="Name" autocomplete="off" /></td>
+				<td data-input="text"><input type="text" placeholder="Last name" autocomplete="off" /></td>
+				<td data-input="text"><input type="text" placeholder="Phone" autocomplete="off" /></td>
+				<td data-input="radio">
+					<input type="radio" id="myradio" name="myradio" />
+				</td>
+				<td data-input="checkbox">
+					<input type="checkbox" />
 				</td>
 			</tr>
 		</table>
-
-
-
-
-		<br /><br />
-
-
-
-
-		<table id="table2" border="2" style="border: 2px solid;" cellspacing=1>
-			<tr>
-				<th colspan="5">
-					<button type="button" onclick="oSmartTableAg.add('#table2')">
-						Save
-					</button>
-					Example #2
-				</th>
-			</tr>
-			<tr data-type="title">
-				<th></th>
-				<th data-id="data1">Data #1</th>
-				<th data-id="data2">Data #2</th>
-				<th data-id="data3">Data #3</th>
-				<th data-id="data4">Data #4</th>
-			</tr>
-			<tr data-id="1" data-type="data">
-				<td data-ignorefield="true">
-					<button id="delete">
-						Delete
-					</button>
-				</td>
-				<td data-input="text"><input type="text" placeholder="Data #1" value="11" autocomplete="off" /></td>
-				<td data-input="text"><input type="text" placeholder="Data #2" value="22" autocomplete="off" /></td>
-				<td data-input="text"><input type="text" placeholder="Data #3" value="33" autocomplete="off" /></td>
-				<td data-input="text"><input type="text" placeholder="Data #4" value="44" autocomplete="off" /></td>
-			</tr>
-			<tr data-id="2" data-type="data">
-				<td data-ignorefield="true">
-					<button id="delete">
-						Delete
-					</button>
-				</td>
-				<td data-input="text"><input type="text" placeholder="Data #1" value="55" autocomplete="off" /></td>
-				<td data-input="text"><input type="text" placeholder="Data #2" value="66" autocomplete="off" /></td>
-				<td data-input="text"><input type="text" placeholder="Data #3" value="77" autocomplete="off" /></td>
-				<td data-input="text"><input type="text" placeholder="Data #4" value="88" autocomplete="off" /></td>
-			</tr>
-			<tr data-id="3" data-type="data">
-				<td data-ignorefield="true">
-					<button id="delete">
-						Delete
-					</button>
-				</td>
-				<td data-input="text"><input type="text" placeholder="Data #1" value="99" autocomplete="off" /></td>
-				<td data-input="text"><input type="text" placeholder="Data #2" value="1010" autocomplete="off" /></td>
-				<td data-input="text"><input type="text" placeholder="Data #3" value="1111" autocomplete="off" /></td>
-				<td data-input="text"><input type="text" placeholder="Data #4" value="1212" autocomplete="off" /></td>
-			</tr>
-			<tr id="tableinputs" style="display: none;">
-				<td colspan="5">
-					<table>
-						<tr>
-							<td data-input="ignorefield">
-								<button id="delete">
-									Delete
-								</button>
-							</td>
-							<td data-input="text"><input type="text" placeholder="Data #1" class="" autocomplete="off" /></td>
-							<td data-input="text"><input type="text" placeholder="Data #2" class="" autocomplete="off" /></td>
-							<td data-input="text"><input type="text" placeholder="Data #3" class="" autocomplete="off" /></td>
-							<td data-input="text"><input type="text" placeholder="Data #4" class="" autocomplete="off" /></td>
-						</tr>
-					</table>
-				</td>
-			</tr>
-		</table>
-
-
-
-		
 	</body>
 </html>
 
 <script>
 
 oSmartTableAg.setEventsFromTable('#table1');
-oSmartTableAg.setEventsFromTable('#table2');
 
 </script>
