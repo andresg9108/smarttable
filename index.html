@@ -9,7 +9,9 @@
 		<script src="dist/main.min.js"></script>
 	</head>
 	<body>
-		<form method="post" autocomplete="off">
+
+
+		<form method="post">
 			<table id="table1" border="2" style="border: 2px solid;" cellspacing=1>
 				<tr>
 					<th colspan="7">
@@ -41,9 +43,9 @@
 							<option value="5">5</option>
 						</select>
 					</td>
-					<td data-input="text"><input type="text" placeholder="Name" value="Pepe" /></td>
-					<td data-input="text"><input type="text" placeholder="Last name" value="Carvajal" /></td>
-					<td data-input="text"><input type="text" placeholder="Phone" value="123" /></td>
+					<td data-input="text"><input type="text" placeholder="Name" value="Pepe" autocomplete=off /></td>
+					<td data-input="text"><input type="text" placeholder="Last name" value="Carvajal" autocomplete=off /></td>
+					<td data-input="text"><input type="text" placeholder="Phone" value="123" autocomplete=off /></td>
 					<td data-input="radio">
 						<input type="radio" id="myradio" name="myradio" checked/>
 					</td>
@@ -54,13 +56,42 @@
 			</table>
 		</form>
 
-		<br /><br />
-		<button type="button" onclick="oSmartTableAg.add('#table1', '#table1fields')">
+
+		<br />
+		<button type="button" onclick="oSmartTableAg.add('#table1', '#tablefields')">
 			Add
 		</button>
+		<br /><br />
 
-		<br /><br /><br /><br />
-		<table id="table1fields" style="display: none;">
+
+		<form method="post">
+			<table id="table2" border="2" style="border: 2px solid;" cellspacing=1>
+				<tr>
+					<th colspan="7">
+						Example #2
+					</th>
+				</tr>
+				<tr data-type="title">
+					<th></th>
+					<th data-id="type">Type</th>
+					<th data-id="name">Name</th>
+					<th data-id="lastname">Last Name</th>
+					<th data-id="phone">Phone</th>
+					<th data-id="myradio">My Radio</th>
+					<th data-id="mycheck">My Check</th>
+				</tr>
+			</table>
+		</form>
+
+
+		<br />
+		<button type="button" onclick="oSmartTableAg.add('#table2', '#tablefields')">
+			Add
+		</button>
+		<br /><br />
+
+
+		<table id="tablefields" style="display: none;">
 			<tr data-type="data">
 				<td data-ignorefield="true">
 					<button type="button" id="delete">
@@ -77,9 +108,9 @@
 						<option value="5">5</option>
 					</select>
 				</td>
-				<td data-input="text"><input type="text" placeholder="Name" /></td>
-				<td data-input="text"><input type="text" placeholder="Last name" /></td>
-				<td data-input="text"><input type="text" placeholder="Phone" /></td>
+				<td data-input="text"><input type="text" placeholder="Name" autocomplete=off /></td>
+				<td data-input="text"><input type="text" placeholder="Last name" autocomplete=off /></td>
+				<td data-input="text"><input type="text" placeholder="Phone" autocomplete=off /></td>
 				<td data-input="radio">
 					<input type="radio" id="myradio" name="myradio" />
 				</td>
@@ -88,6 +119,8 @@
 				</td>
 			</tr>
 		</table>
+
+
 	</body>
 </html>
 
