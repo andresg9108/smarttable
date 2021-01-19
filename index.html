@@ -9,48 +9,50 @@
 		<script src="dist/main.min.js"></script>
 	</head>
 	<body>
-		<table id="table1" border="2" style="border: 2px solid;" cellspacing=1>
-			<tr>
-				<th colspan="7">
-					Example #1
-				</th>
-			</tr>
-			<tr data-type="title">
-				<th></th>
-				<th data-id="type">Type</th>
-				<th data-id="name">Name</th>
-				<th data-id="lastname">Last Name</th>
-				<th data-id="phone">Phone</th>
-				<th data-id="myradio">My Radio</th>
-				<th data-id="mycheck">My Check</th>
-			</tr>
-			<tr data-type="data" data-id="1">
-				<td data-ignorefield="true">
-					<button type="button" id="delete">
-						Delete
-					</button>
-				</td>
-				<td data-input="select">
-					<select class="">
-						<option value="0">Select a type</option>
-						<option value="1">1</option>
-						<option value="2">2</option>
-						<option value="3" selected>3</option>
-						<option value="4">4</option>
-						<option value="5">5</option>
-					</select>
-				</td>
-				<td data-input="text"><input type="text" placeholder="Name" value="Pepe" autocomplete="off" /></td>
-				<td data-input="text"><input type="text" placeholder="Last name" value="Carvajal" autocomplete="off" /></td>
-				<td data-input="text"><input type="text" placeholder="Phone" value="123" autocomplete="off" /></td>
-				<td data-input="radio">
-					<input type="radio" id="myradio" name="myradio" checked/>
-				</td>
-				<td data-input="checkbox">
-					<input type="checkbox" />
-				</td>
-			</tr>
-		</table>
+		<form method="post" autocomplete="off">
+			<table id="table1" border="2" style="border: 2px solid;" cellspacing=1>
+				<tr>
+					<th colspan="7">
+						Example #1
+					</th>
+				</tr>
+				<tr data-type="title">
+					<th></th>
+					<th data-id="type">Type</th>
+					<th data-id="name">Name</th>
+					<th data-id="lastname">Last Name</th>
+					<th data-id="phone">Phone</th>
+					<th data-id="myradio">My Radio</th>
+					<th data-id="mycheck">My Check</th>
+				</tr>
+				<tr data-type="data" data-id="1">
+					<td data-ignorefield="true">
+						<button type="button" id="delete">
+							Delete
+						</button>
+					</td>
+					<td data-input="select">
+						<select class="">
+							<option value="0">Select a type</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3" selected>3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+						</select>
+					</td>
+					<td data-input="text"><input type="text" placeholder="Name" value="Pepe" /></td>
+					<td data-input="text"><input type="text" placeholder="Last name" value="Carvajal" /></td>
+					<td data-input="text"><input type="text" placeholder="Phone" value="123" /></td>
+					<td data-input="radio">
+						<input type="radio" id="myradio" name="myradio" checked/>
+					</td>
+					<td data-input="checkbox">
+						<input type="checkbox" />
+					</td>
+				</tr>
+			</table>
+		</form>
 
 		<br /><br />
 		<button type="button" onclick="oSmartTableAg.add('#table1', '#table1fields')">
@@ -75,9 +77,9 @@
 						<option value="5">5</option>
 					</select>
 				</td>
-				<td data-input="text"><input type="text" placeholder="Name" autocomplete="off" /></td>
-				<td data-input="text"><input type="text" placeholder="Last name" autocomplete="off" /></td>
-				<td data-input="text"><input type="text" placeholder="Phone" autocomplete="off" /></td>
+				<td data-input="text"><input type="text" placeholder="Name" /></td>
+				<td data-input="text"><input type="text" placeholder="Last name" /></td>
+				<td data-input="text"><input type="text" placeholder="Phone" /></td>
 				<td data-input="radio">
 					<input type="radio" id="myradio" name="myradio" />
 				</td>
