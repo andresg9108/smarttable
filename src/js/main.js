@@ -7,6 +7,13 @@ $(function(){
 
 /*
 */
+oSmartTableAg.add = function(sTag, sTagFields){
+	$(sTag).append($(sTagFields).find('tbody').html());
+	oSmartTableAg.setEventsFromTable(sTag);
+}
+
+/*
+*/
 oSmartTableAg.setEventsFromTable = function(sTag){
 	$.each($(sTag).find('tr'), function(i, v){
 		if($(v).attr('data-type') == 'data'){
@@ -15,31 +22,6 @@ oSmartTableAg.setEventsFromTable = function(sTag){
 			});
 		}
 	});
-}
-
-/*
-*/
-oSmartTableAg.add = function(sTag){
-	var sRow = '<tr data-type="data">';
-
-	$.each($(sTag).find('#tableinputs').find('table').find('td'), function(i, v){
-		var sInput = $(v).attr('data-input');
-
-		if(typeof sInput !== "undefined"){
-			if(sInput == 'ignorefield'){
-				sRow += '<td data-ignorefield="true">' + $(v).html() + '</td>';
-			}else{
-				sRow += '<td data-input="' + sInput + '">' + $(v).html() + '</td>';
-			}
-		}
-	});
-
-	sRow += '</tr>';
-	var oTableInputs = $(sTag).find('#tableinputs');
-	$(sTag).find('#tableinputs').remove();
-	$(sTag).append(sRow);
-	$(sTag).append(oTableInputs);
-	oSmartTableAg.setEventsFromTable(sTag);
 }
 
 /*
