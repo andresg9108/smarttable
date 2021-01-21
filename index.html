@@ -47,24 +47,20 @@
 					<td data-input="text"><input type="text" placeholder="Last name" value="Carvajal" /></td>
 					<td data-input="text"><input type="text" placeholder="Phone" value="123" /></td>
 					<td data-input="radio">
-						<input type="radio" id="myradio" name="myradio" checked/>
+						<input type="radio" checked/>
 					</td>
 					<td data-input="checkbox">
 						<input type="checkbox" />
 					</td>
 				</tr>
 			</table>
-		</form>
 
+			<br />
+			<button type="button" onclick="oSmartTableAg.add('#table1', '#tablefields')">
+				Add
+			</button>
+			<br /><br />
 
-		<br />
-		<button type="button" onclick="oSmartTableAg.add('#table1', '#tablefields')">
-			Add
-		</button>
-		<br /><br />
-
-
-		<form method="post">
 			<table id="table2" border="2" style="border: 2px solid;" cellspacing=1>
 				<tr>
 					<th colspan="7">
@@ -81,14 +77,13 @@
 					<th data-id="mycheck">My Check</th>
 				</tr>
 			</table>
+
+			<br />
+			<button type="button" onclick="oSmartTableAg.add('#table2', '#tablefields')">
+				Add
+			</button>
+			<br /><br />
 		</form>
-
-
-		<br />
-		<button type="button" onclick="oSmartTableAg.add('#table2', '#tablefields')">
-			Add
-		</button>
-		<br /><br />
 
 
 		<table id="tablefields" style="display: none;">
@@ -112,7 +107,7 @@
 				<td data-input="text"><input type="text" placeholder="Last name" /></td>
 				<td data-input="text"><input type="text" placeholder="Phone" /></td>
 				<td data-input="radio">
-					<input type="radio" id="myradio" name="myradio" />
+					<input type="radio" />
 				</td>
 				<td data-input="checkbox">
 					<input type="checkbox" />

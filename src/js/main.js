@@ -28,6 +28,10 @@ oSmartTableAg.setEventsFromTable = function(sTag){
 					iColumn = iColumn + 1;
 					$(v2).find('input').attr('name', sNameTable + iRow + iColumn);
 				}
+				if($(v2).attr('data-input') == 'radio'){
+					iColumn = iColumn + 1;
+					$(v2).find('input').attr('name', sNameTable + 'Radio' + iColumn);
+				}
 			});
 			// Loading field names.
 
