@@ -15,11 +15,27 @@ oSmartTableAg.add = function(sTag, sTagFields){
 /*
 */
 oSmartTableAg.setEventsFromTable = function(sTag){
+	var sNameTable = $(sTag).attr('id');
+	var iRow = 0;
+	var iColumn = 0;
 	$.each($(sTag).find('tr'), function(i, v){
 		if($(v).attr('data-type') == 'data'){
+			// Loading field names.
+			iColumn = 0;
+			iRow = iRow + 1;
+			$.each($(v).find('td'), function(i2, v2){
+				if($(v2).attr('data-input') == 'text'){
+					iColumn = iColumn + 1;
+					$(v2).find('input').attr('name', sNameTable + iRow + iColumn);
+				}
+			});
+			// Loading field names.
+
+			// Event delete.
 			$(v).find('#delete').on('click', function(){
 				$(v).remove();
 			});
+			// Event delete.
 		}
 	});
 }
