@@ -36,7 +36,7 @@ oSmartTableAg.setEventsFromTable = function(sTag){
 			// Loading field names.
 
 			// Event delete.
-			$(v).find('#delete').on('click', function(){
+			$(v).find('.smarttable-ag-delete').on('click', function(){
 				$(v).remove();
 			});
 			// Event delete.
