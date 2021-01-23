@@ -74,7 +74,7 @@ oSmartTableAg.getArrayFromTable = function(sTag){
 				oObject[i2] = aResponse[iIndex];
 				iIndex++;
 			});
-			oObject.data_id = (typeof iIdData !== "undefined") ? iIdData : "";
+			oObject.id = (typeof iIdData !== "undefined") ? iIdData : "";
 
 			aArray.push(oObject);
 		}
