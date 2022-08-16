@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+
+		<title>Smart table</title>
+
+		<script src="node_modules/jquery/dist/jquery.min.js"></script>
+		<script src="dist/main.min.js"></script>
+	</head>
+	<body>
+
+		<!---->
+		<form method="post">
+			<table id="table1" border="2" style="border: 2px solid;" cellspacing=1>
+				<tr>
+					<th colspan="7">
+						Example #1
+					</th>
+				</tr>
+				<tr data-type="title">
+					<th></th>
+					<th data-id="type">Type</th>
+					<th data-id="name">Name</th>
+					<th data-id="lastname">Last Name</th>
+					<th data-id="phone">Phone</th>
+					<th data-id="myradio">My Radio</th>
+					<th data-id="mycheck">My Check</th>
+				</tr>
+			</table>
+
+			<br />
+			<button type="button" onclick="oSmartTableAg.add('#table1', '#tablefields')">
+				Add
+			</button>
+		</form>
+
+		<!---->
+		<table id="tablefields" style="display: none;">
+			<tr data-type="data">
+				<td data-ignorefield="true">
+					<button type="button" class="smarttable-ag-delete">
+						Delete
+					</button>
+				</td>
+				<td data-input="select">
+					<select class="">
+						<option value="0">Select a type</option>
+						<option value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+					</select>
+				</td>
+				<td data-input="text"><input type="text" placeholder="Name" /></td>
+				<td data-input="text"><input type="text" placeholder="Last name" /></td>
+				<td data-input="text"><input type="text" placeholder="Phone" /></td>
+				<td data-input="radio">
+					<input type="radio" />
+				</td>
+				<td data-input="checkbox">
+					<input type="checkbox" />
+				</td>
+			</tr>
+		</table>
+
+	</body>
+</html>
+
+<script>
+
+oSmartTableAg.setEventsFromTable('#table1');
+
+</script>

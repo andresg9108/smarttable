@@ -1,4 +1,5 @@
 /node_modules
 /src
-Gruntfile.js
-index.html
+/Gruntfile.js
+/index.html
+/test.html

@@ -22,18 +22,20 @@ The goal of this project is to provide a smart html table.
 
 ## Getting started <span name="GettingStarted"></span> ##
 
-***THE DOCUMENTATION IS BEING REVIEWED FROM HERE***
-
-
-
-
-
-To install My Design in our project we must execute the following command.
+To install Smart Table in our project we must execute the following command.
 
 ~~~
-npm i mydesign-ag
+npm i smarttable-ag
 ~~~
 
-We can now include the following file in our project and start using everything My Design has in store for us.
+We can now include the following JavaScript files in our project and start using everything Smart Table has in store for us.
 
-**File: ./node_modules/mydesign-ag/dist/main.min.css**
+```html
+...
+<head>
+  ...
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/smarttable-ag/dist/main.min.js"></script>
+</head>
+...
+```
