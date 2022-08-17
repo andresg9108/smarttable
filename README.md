@@ -92,7 +92,7 @@ Now we are going to add the labels that our new “table” will contain.
 
 The first thing we find is a “tr” tag, the algorithm takes this tag and everything it contains and adds it to the main table that we create later, it is important to put the 'data-type="data"' declaration so that the program knows that "tr" is a row of data. Inside “tr” we find common “td” tags in HTML tables, 'data-ignorefield="true"' tells the algorithm that anything inside this field when in the main table should be ignored when retrieving data from the table, 'data - input="select "' tells the algorithm that what is inside is a "select" when retrieving the data from the table (when it is in the main table), and the same goes for 'data -input="text"', 'data-input="radio"' and 'data input="checkbox"'.
 
-Also see that the “button” inside the ‘<td data-ignorefield="true">’ contains the class ‘class="smarttable-ag-delete"’. Here we can create the buttons we want, but the button that contains this class will allow us to delete the field.
+Also see that the “button” inside the ‘\<td data-ignorefield="true"\>’ contains the class ‘class="smarttable-ag-delete"’. Here we can create the buttons we want, but the button that contains this class will allow us to delete the field.
 
 Now we will create our "form" where we can create the fields and buttons that we want and also include our main table as follows.
 
