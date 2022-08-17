@@ -10,7 +10,6 @@
 	</head>
 	<body>
 
-
 		<form method="post">
 			<table id="table1" border="2" style="border: 2px solid;" cellspacing=1>
 				<tr>
@@ -27,64 +26,13 @@
 					<th data-id="myradio">My Radio</th>
 					<th data-id="mycheck">My Check</th>
 				</tr>
-				<tr data-type="data" data-id="1">
-					<td data-ignorefield="true">
-						<button type="button" class="smarttable-ag-delete">
-							Delete
-						</button>
-					</td>
-					<td data-input="select">
-						<select class="">
-							<option value="0">Select a type</option>
-							<option value="1">1</option>
-							<option value="2">2</option>
-							<option value="3" selected>3</option>
-							<option value="4">4</option>
-							<option value="5">5</option>
-						</select>
-					</td>
-					<td data-input="text"><input type="text" placeholder="Name" value="Pepe" /></td>
-					<td data-input="text"><input type="text" placeholder="Last name" value="Carvajal" /></td>
-					<td data-input="text"><input type="text" placeholder="Phone" value="123" /></td>
-					<td data-input="radio">
-						<input type="radio" checked/>
-					</td>
-					<td data-input="checkbox">
-						<input type="checkbox" />
-					</td>
-				</tr>
 			</table>
 
 			<br />
 			<button type="button" onclick="oSmartTableAg.add('#table1', '#tablefields')">
 				Add
 			</button>
-			<br /><br />
-
-			<table id="table2" border="2" style="border: 2px solid;" cellspacing=1>
-				<tr>
-					<th colspan="7">
-						Example #2
-					</th>
-				</tr>
-				<tr data-type="title">
-					<th></th>
-					<th data-id="type">Type</th>
-					<th data-id="name">Name</th>
-					<th data-id="lastname">Last Name</th>
-					<th data-id="phone">Phone</th>
-					<th data-id="myradio">My Radio</th>
-					<th data-id="mycheck">My Check</th>
-				</tr>
-			</table>
-
-			<br />
-			<button type="button" onclick="oSmartTableAg.add('#table2', '#tablefields')">
-				Add
-			</button>
-			<br /><br />
 		</form>
-
 
 		<table id="tablefields" style="display: none;">
 			<tr data-type="data">
@@ -116,9 +64,8 @@
 		</table>
 
 		<script>
-
+		
 		oSmartTableAg.setEventsFromTable('#table1');
-		oSmartTableAg.setEventsFromTable('#table2');
 
 		</script>
 	</body>
