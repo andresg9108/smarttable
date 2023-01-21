@@ -5,7 +5,7 @@
   "main": "",
   "scripts": {
     "start": "grunt",
-    "css-dist": "grunt copy:cssdist",
+    "copydist": "grunt copy:dist",
     "uglify": "grunt uglify",
     "prepare": "npm-run-all uglify"
   },

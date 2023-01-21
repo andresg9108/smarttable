@@ -23,7 +23,7 @@ module.exports = function(grunt) {
         },
 
         copy: {
-            cssdist: {
+            dist: {
                 expand: true,
                 cwd: 'src/js/dist/',
                 src: ["main.min.js", "main.min.js.map"],

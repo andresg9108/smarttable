@@ -2,23 +2,63 @@
 
 var oSmartTableAg = {};
 
-$(function(){
-});
-
 /*
 */
-oSmartTableAg.add = function(sTag, sTagFields){
-	$(sTag).append($(sTagFields).find('tbody').html());
-	oSmartTableAg.setEventsFromTable(sTag);
+oSmartTableAg.add = (sTag, sTagFields) => {
+	// $(sTag).append($(sTagFields).find('tbody').html());
+	// oSmartTableAg.setEventsFromTable(sTag);
 }
 
 /*
 */
-oSmartTableAg.setEventsFromTable = function(sTag){
-	var sNameTable = $(sTag).attr('id');
-	var iRow = 0;
-	var iColumn = 0;
-	$.each($(sTag).find('tr'), function(i, v){
+oSmartTableAg.setEventsFromTable = (sTag) => {
+	let oElement = document.querySelector(sTag);
+	let sNameTable = oElement.getAttribute('id');
+	let iRow = 0;
+	let iColumn = 0;
+
+	let oTr = oElement.querySelector('tr');
+
+	do{
+		let sDataType = oTr.getAttribute('data-type');
+
+		if(sDataType !== null && sDataType === 'data'){
+			// Loading field names.
+			iColumn = 0;
+			iRow = iRow + 1;
+
+			let oTd = oTr.querySelector('td');
+
+			do{
+				let oInput = oTd.querySelector('input');
+				let sDataInput = oTd.getAttribute('data-input');
+
+				if(sDataInput == 'text'){
+					oInput.setAttribute('name', `${sNameTable}${iRow}${iColumn}`);
+					iColumn++;
+				}
+				if(sDataInput == 'radio'){
+					oInput.setAttribute('name', `${sNameTable}Radio${iColumn}`);
+					iColumn++;
+				}
+
+				oTd = oTd.nextElementSibling;
+			}while(oTd !== null);
+			// Loading field names.
+
+			// Event delete.
+			let oButton = oTr.querySelector('.smarttable-ag-delete');
+			oButton.addEventListener('click', () => {
+				console.log('Delete...');
+				// oElement.removeChild(oTr);
+			});
+			// Event delete.
+		}
+
+		oTr = oTr.nextElementSibling;
+	}while(oTr !== null);
+	
+	/*$.each($(sTag).find('tr'), function(i, v){
 		if($(v).attr('data-type') == 'data'){
 			// Loading field names.
 			iColumn = 0;
@@ -41,15 +81,15 @@ oSmartTableAg.setEventsFromTable = function(sTag){
 			});
 			// Event delete.
 		}
-	});
+	});*/
 }
 
 /*
 */
-oSmartTableAg.getArrayFromTable = function(sTag){
+oSmartTableAg.getArrayFromTable = (sTag) => {
 	var aArray = [];
 	
-	$.each($(sTag).find("tr"), function(i, v){
+	/*$.each($(sTag).find("tr"), function(i, v){
 		if($(v).attr("data-type") == "data"){
 			var iIdData = $(v).attr("data-id");
 			var oObject = oSmartTableAg.getObjectFromTable(sTag);
@@ -78,18 +118,18 @@ oSmartTableAg.getArrayFromTable = function(sTag){
 
 			aArray.push(oObject);
 		}
-	});
+	});*/
 
 	return aArray;
 }
 
 /*
 */
-oSmartTableAg.getObjectFromTable = function(sTag){
+oSmartTableAg.getObjectFromTable = (sTag) => {
 	var oObject = {};
 	var iIndex = -1;
 
-	do{
+	/*do{
 		iIndex++;
 		var sType = $($(sTag).find("tr")[iIndex]).attr('data-type');
 
@@ -101,7 +141,7 @@ oSmartTableAg.getObjectFromTable = function(sTag){
 				}
 			});
 		}
-	}while(sType != 'title' && iIndex < $(sTag).find("tr").length);
+	}while(sType != 'title' && iIndex < $(sTag).find("tr").length);*/
 
 	return oObject;
 }
