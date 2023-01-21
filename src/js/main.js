@@ -5,6 +5,12 @@ var oSmartTableAg = {};
 /*
 */
 oSmartTableAg.add = (sTag, sTagFields) => {
+	let oElement = document.querySelector(sTag);
+	let oFields = document.querySelector(sTagFields);
+	let oTBody = oFields.querySelector('tbody');
+
+	console.log(typeof oTBody.innerHTML);
+
 	// $(sTag).append($(sTagFields).find('tbody').html());
 	// oSmartTableAg.setEventsFromTable(sTag);
 }
@@ -49,39 +55,16 @@ oSmartTableAg.setEventsFromTable = (sTag) => {
 			// Event delete.
 			let oButton = oTr.querySelector('.smarttable-ag-delete');
 			oButton.addEventListener('click', () => {
-				console.log('Delete...');
-				// oElement.removeChild(oTr);
+				let oTrParent = oButton.parentElement.parentElement;
+				let oTBodyParent = oTrParent.parentElement;
+
+				oTBodyParent.removeChild(oTrParent);
 			});
 			// Event delete.
 		}
 
 		oTr = oTr.nextElementSibling;
 	}while(oTr !== null);
-	
-	/*$.each($(sTag).find('tr'), function(i, v){
-		if($(v).attr('data-type') == 'data'){
-			// Loading field names.
-			iColumn = 0;
-			iRow = iRow + 1;
-			$.each($(v).find('td'), function(i2, v2){
-				if($(v2).attr('data-input') == 'text'){
-					iColumn = iColumn + 1;
-					$(v2).find('input').attr('name', sNameTable + iRow + iColumn);
-				}
-				if($(v2).attr('data-input') == 'radio'){
-					iColumn = iColumn + 1;
-					$(v2).find('input').attr('name', sNameTable + 'Radio' + iColumn);
-				}
-			});
-			// Loading field names.
-
-			// Event delete.
-			$(v).find('.smarttable-ag-delete').on('click', function(){
-				$(v).remove();
-			});
-			// Event delete.
-		}
-	});*/
 }
 
 /*
