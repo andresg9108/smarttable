@@ -1,16 +1,12 @@
 const fs = require('fs');
 
 module.exports = function(grunt) {
-    // Python
-    var aRouteRoot = [
-        './*'
-    ];
+    // Root
+    var aRouteRoot = ['./*'];
 
     // Js
     var aRouteJs = ['./src/js/*'];
-    var oRouteJs = {
-        'src/js/dist/main.min.js': ['src/js/*.js']
-    };
+    var oRouteJs = {'src/js/dist/main.min.js': ['src/js/*.js']};
 
     require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
@@ -27,7 +23,7 @@ module.exports = function(grunt) {
         },
 
         copy: {
-            css_dist: {
+            cssdist: {
                 expand: true,
                 cwd: 'src/js/dist/',
                 src: ["main.min.js", "main.min.js.map"],
@@ -57,5 +53,4 @@ module.exports = function(grunt) {
     });
 
     grunt.registerTask('default', ['watch']);
-    grunt.loadNpmTasks('grunt-contrib-uglify');
 };
