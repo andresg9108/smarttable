@@ -1,10 +1,11 @@
 {
   "name": "smarttable-ag",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "description": "The goal of this project is to provide a smart html table.",
   "main": "",
   "scripts": {
     "start": "grunt",
+    "copydist": "grunt copy:dist",
     "uglify": "grunt uglify",
     "prepare": "npm-run-all uglify"
   },
@@ -18,9 +19,6 @@
     "url": "https://github.com/andresg9108/smarttable/issues"
   },
   "homepage": "https://github.com/andresg9108/smarttable#readme",
-  "dependencies": {
-    "jquery": "^3.6.0"
-  },
   "devDependencies": {
     "grunt": "^1.5.3",
     "grunt-contrib-copy": "^1.0.0",

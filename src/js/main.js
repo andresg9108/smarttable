@@ -2,106 +2,161 @@
 
 var oSmartTableAg = {};
 
-$(function(){
-});
-
 /*
 */
-oSmartTableAg.add = function(sTag, sTagFields){
-	$(sTag).append($(sTagFields).find('tbody').html());
-	oSmartTableAg.setEventsFromTable(sTag);
+oSmartTableAg.add = (sTag, sTagFields) => {
+	let oElement = document.querySelector(sTag);
+	let oFields = document.querySelector(sTagFields).querySelector('tbody');
+
+	oElement.querySelector('tbody').insertAdjacentHTML('beforeend', `${oFields.innerHTML}`);
+	oSmartTableAg.loadTableEvents({
+			smarttable: [sTag]
+		});
 }
 
 /*
 */
-oSmartTableAg.setEventsFromTable = function(sTag){
-	var sNameTable = $(sTag).attr('id');
-	var iRow = 0;
-	var iColumn = 0;
-	$.each($(sTag).find('tr'), function(i, v){
-		if($(v).attr('data-type') == 'data'){
-			// Loading field names.
-			iColumn = 0;
-			iRow = iRow + 1;
-			$.each($(v).find('td'), function(i2, v2){
-				if($(v2).attr('data-input') == 'text'){
-					iColumn = iColumn + 1;
-					$(v2).find('input').attr('name', sNameTable + iRow + iColumn);
-				}
-				if($(v2).attr('data-input') == 'radio'){
-					iColumn = iColumn + 1;
-					$(v2).find('input').attr('name', sNameTable + 'Radio' + iColumn);
-				}
-			});
-			// Loading field names.
+oSmartTableAg.loadTableEvents = (oData) => {
+	let aSmartTable = oData.smarttable;
 
-			// Event delete.
-			$(v).find('.smarttable-ag-delete').on('click', function(){
-				$(v).remove();
-			});
-			// Event delete.
-		}
-	});
+	for(let i=0; i<aSmartTable.length; i++){
+		let sTag = aSmartTable[i];
+		let oElement = document.querySelector(sTag);
+		let sNameTable = oElement.getAttribute('id');
+		let iRow = 0;
+		let iColumn = 0;
+
+		let oTr = oElement.querySelector('tr');
+
+		do{
+			let sDataType = oTr.getAttribute('data-type');
+
+			if(sDataType !== null && sDataType === 'data'){
+				// Loading field names.
+				iColumn = 0;
+				iRow = iRow + 1;
+
+				let oTd = oTr.querySelector('td');
+
+				do{
+					let oInput = oTd.querySelector('input');
+					let sDataInput = oTd.getAttribute('data-input');
+
+					if(sDataInput == 'text'){
+						oInput.setAttribute('name', `${sNameTable}${iRow}${iColumn}`);
+						iColumn++;
+					}
+					if(sDataInput == 'radio'){
+						oInput.setAttribute('name', `${sNameTable}Radio${iColumn}`);
+						iColumn++;
+					}
+
+					oTd = oTd.nextElementSibling;
+				}while(oTd !== null);
+				// Loading field names.
+
+				// Event delete.
+				let oButton = oTr.querySelector('.smarttable-ag-delete');
+				oButton.addEventListener('click', () => {
+					let oTrParent = oButton.parentElement.parentElement;
+					let oTBodyParent = oTrParent.parentElement;
+
+					if(oTBodyParent !== null && oTrParent !== null){
+						oTBodyParent.removeChild(oTrParent);
+					}
+				});
+				// Event delete.
+			}
+
+			oTr = oTr.nextElementSibling;
+		}while(oTr !== null);
+	}
 }
 
 /*
 */
-oSmartTableAg.getArrayFromTable = function(sTag){
-	var aArray = [];
-	
-	$.each($(sTag).find("tr"), function(i, v){
-		if($(v).attr("data-type") == "data"){
-			var iIdData = $(v).attr("data-id");
-			var oObject = oSmartTableAg.getObjectFromTable(sTag);
-			var aResponse = [];
+oSmartTableAg.getArrayFromTable = (sTag) => {
+	let oElement = document.querySelector(sTag);
+	let aArray = [];
 
-			$.each($(v).find("td"), function(i2, v2){
-				if($(v2).attr('data-ignorefield') != 'true'){
-					if($(v2).attr('data-input') == 'text'){
-						aResponse.push($(v2).find('input').val());
-					}else if($(v2).attr('data-input') == 'select'){
-						aResponse.push($(v2).find('select').val());
-					}else if($(v2).attr('data-input') == 'checkbox' || $(v2).attr('data-input') == 'radio'){
-						aResponse.push($(v2).find('input').is(':checked') ? 1 : 0);
+	let oTr = oElement.querySelector('tr');
+
+	do{
+		let sDataType = oTr.getAttribute('data-type');
+
+		if(sDataType !== null && sDataType === 'data'){
+			let iIdData = oTr.getAttribute('data-id');
+			let oObject = oSmartTableAg.getObjectFromTable(sTag);
+			let aResponse = [];
+
+			let oTd = oTr.querySelector('td');
+
+			do{
+				let sDataIgnorefield = oTd.getAttribute('data-ignorefield');
+
+				if(sDataIgnorefield !== 'true'){
+					let sDataInput = oTd.getAttribute('data-input');
+
+					if(sDataInput === 'text'){
+						aResponse.push(oTd.querySelector('input').value);
+					}else if(sDataInput === 'select'){
+						aResponse.push(oTd.querySelector('select').value);
+					}else if(sDataInput === 'checkbox' || sDataInput === 'radio'){
+						aResponse.push((oTd.querySelector('input').checked) ? 1 : 0);
 					}else{
-						aResponse.push($(v2).text());
+						aResponse.push(oTd.innerHTML);
 					}
 				}
-			});
 
-			var iIndex = 0;
-			$.each(oObject, function(i2, v2){
-				oObject[i2] = aResponse[iIndex];
-				iIndex++;
-			});
-			oObject.id = (typeof iIdData !== "undefined") ? iIdData : "";
+				oTd = oTd.nextElementSibling;
+			}while(oTd !== null);
+
+			let i2 = 0;
+			for(let i in oObject){
+				oObject[i] = aResponse[i2];
+				i2++;
+			}
+			oObject.id = (iIdData !== null) ? iIdData : "";
 
 			aArray.push(oObject);
 		}
-	});
 
+		oTr = oTr.nextElementSibling;
+	}while(oTr !== null);
+	
 	return aArray;
 }
 
 /*
 */
-oSmartTableAg.getObjectFromTable = function(sTag){
-	var oObject = {};
-	var iIndex = -1;
+oSmartTableAg.getObjectFromTable = (sTag) => {
+	let oElement = document.querySelector(sTag);
+	let oObject = {};
+
+	let oTr = oElement.querySelector('tr');
+	let bTittle = false;
 
 	do{
-		iIndex++;
-		var sType = $($(sTag).find("tr")[iIndex]).attr('data-type');
+		let sDataType = oTr.getAttribute('data-type');
 
-		if(sType == 'title'){
-			$.each($($(sTag).find("tr")[iIndex]).find("th"), function(i, v){
-				var sId = $(v).attr("data-id");
-				if(typeof sId !== 'undefined'){
-					oObject[sId] = '';
+		if(sDataType == 'title'){
+			let oTh = oTr.querySelector('th');
+
+			do{
+				let sDataId = oTh.getAttribute('data-id');
+
+				if(sDataId !== null){
+					oObject[sDataId] = '';
 				}
-			});
+
+				oTh = oTh.nextElementSibling;
+			}while(oTh !== null);
+
+			bTittle = true;
 		}
-	}while(sType != 'title' && iIndex < $(sTag).find("tr").length);
+
+		oTr = oTr.nextElementSibling;
+	}while(oTr !== null && !bTittle);
 
 	return oObject;
 }
