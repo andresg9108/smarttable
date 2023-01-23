@@ -1,6 +1,6 @@
 {
   "name": "smarttable-ag",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "The goal of this project is to provide a smart html table.",
   "main": "",
   "scripts": {

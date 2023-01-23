@@ -58,7 +58,7 @@ oSmartTableAg.loadTableEvents = (oData) => {
 				// Event delete.
 				let oButton = oTr.querySelector('.smarttable-ag-delete');
 				oButton.addEventListener('click', () => {
-					let oTrParent = oButton.parentElement.parentElement;
+					let oTrParent = oButton.closest('tr');
 					let oTBodyParent = oTrParent.parentElement;
 
 					if(oTBodyParent !== null && oTrParent !== null){
