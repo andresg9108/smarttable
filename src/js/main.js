@@ -9,59 +9,68 @@ oSmartTableAg.add = (sTag, sTagFields) => {
 	let oFields = document.querySelector(sTagFields).querySelector('tbody');
 
 	oElement.querySelector('tbody').insertAdjacentHTML('beforeend', `${oFields.innerHTML}`);
-	oSmartTableAg.setEventsFromTable(sTag);
+	oSmartTableAg.loadTableEvents({
+			smarttable: [sTag]
+		});
 }
 
 /*
 */
-oSmartTableAg.setEventsFromTable = (sTag) => {
-	let oElement = document.querySelector(sTag);
-	let sNameTable = oElement.getAttribute('id');
-	let iRow = 0;
-	let iColumn = 0;
+oSmartTableAg.loadTableEvents = (oData) => {
+	let aSmartTable = oData.smarttable;
 
-	let oTr = oElement.querySelector('tr');
+	for(let i=0; i<aSmartTable.length; i++){
+		let sTag = aSmartTable[i];
+		let oElement = document.querySelector(sTag);
+		let sNameTable = oElement.getAttribute('id');
+		let iRow = 0;
+		let iColumn = 0;
 
-	do{
-		let sDataType = oTr.getAttribute('data-type');
+		let oTr = oElement.querySelector('tr');
 
-		if(sDataType !== null && sDataType === 'data'){
-			// Loading field names.
-			iColumn = 0;
-			iRow = iRow + 1;
+		do{
+			let sDataType = oTr.getAttribute('data-type');
 
-			let oTd = oTr.querySelector('td');
+			if(sDataType !== null && sDataType === 'data'){
+				// Loading field names.
+				iColumn = 0;
+				iRow = iRow + 1;
 
-			do{
-				let oInput = oTd.querySelector('input');
-				let sDataInput = oTd.getAttribute('data-input');
+				let oTd = oTr.querySelector('td');
 
-				if(sDataInput == 'text'){
-					oInput.setAttribute('name', `${sNameTable}${iRow}${iColumn}`);
-					iColumn++;
-				}
-				if(sDataInput == 'radio'){
-					oInput.setAttribute('name', `${sNameTable}Radio${iColumn}`);
-					iColumn++;
-				}
+				do{
+					let oInput = oTd.querySelector('input');
+					let sDataInput = oTd.getAttribute('data-input');
 
-				oTd = oTd.nextElementSibling;
-			}while(oTd !== null);
-			// Loading field names.
+					if(sDataInput == 'text'){
+						oInput.setAttribute('name', `${sNameTable}${iRow}${iColumn}`);
+						iColumn++;
+					}
+					if(sDataInput == 'radio'){
+						oInput.setAttribute('name', `${sNameTable}Radio${iColumn}`);
+						iColumn++;
+					}
 
-			// Event delete.
-			let oButton = oTr.querySelector('.smarttable-ag-delete');
-			oButton.addEventListener('click', () => {
-				let oTrParent = oButton.parentElement.parentElement;
-				let oTBodyParent = oTrParent.parentElement;
+					oTd = oTd.nextElementSibling;
+				}while(oTd !== null);
+				// Loading field names.
 
-				oTBodyParent.removeChild(oTrParent);
-			});
-			// Event delete.
-		}
+				// Event delete.
+				let oButton = oTr.querySelector('.smarttable-ag-delete');
+				oButton.addEventListener('click', () => {
+					let oTrParent = oButton.parentElement.parentElement;
+					let oTBodyParent = oTrParent.parentElement;
 
-		oTr = oTr.nextElementSibling;
-	}while(oTr !== null);
+					if(oTBodyParent !== null && oTrParent !== null){
+						oTBodyParent.removeChild(oTrParent);
+					}
+				});
+				// Event delete.
+			}
+
+			oTr = oTr.nextElementSibling;
+		}while(oTr !== null);
+	}
 }
 
 /*
@@ -142,6 +151,8 @@ oSmartTableAg.getObjectFromTable = (sTag) => {
 
 				oTh = oTh.nextElementSibling;
 			}while(oTh !== null);
+
+			bTittle = true;
 		}
 
 		oTr = oTr.nextElementSibling;

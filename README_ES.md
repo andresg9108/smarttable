@@ -1,46 +1,45 @@
-# Smart Table #
+# Tabla inteligente #
 
-## Content ##
+## Contenido ##
 
-1. [Introduction.](#Introduction "Introduction")
-2. [Dependencies.](#Dependencies "Dependencies")
-3. [Getting started.](#GettingStarted "Getting started")
+1. Introducción.
+2. Dependencias.
+3. Empezando.
 
-## Introduction <span name="Introduction"></span> ##
+## Introducción ##
 
-The goal of this project is to provide a smart html table.
+El objetivo de este proyecto es proporcionar una tabla html inteligente.
 
-## Dependencies <span name="Dependencies"></span> ##
+## Dependencias ##
 
 * Node.js (https://nodejs.org).
-  - Run "node -v" in your OS console to see if it is already installed.
-* Npm CLI (https://docs.npmjs.com/cli).
-  - On Windows it comes with the Node.js installer, on Linux based OSs you will need to install it.
-  - Run "npm -v" in your OS console to see if it is already installed.
+  - Ejecuta "node --version" en la consola de su sistema operativo para ver si ya está instalado.
+* CLI de Npm (https://docs.npmjs.com/cli).
+  - En Windows viene con el instalador de Node.js, en los sistemas operativos basados en Linux deberá instalarlo.
+  - Ejecuta "npm --version" en la consola de su sistema operativo para ver si ya está instalado.
 
-## Getting started <span name="GettingStarted"></span> ##
+## Empezando ##
 
-To install Smart Table in our project we must execute the following command.
+Para instalar Smart Table en nuestro proyecto debemos ejecutar el siguiente comando.
 
 ~~~
 npm i smarttable-ag
 ~~~
 
-We can now include the following JavaScript files in our project and start using everything Smart Table has in store for us.
+Ahora podemos incluir los siguientes archivos JavaScript en nuestro proyecto y comenzar a usar todo lo que Smart Table tiene reservado para nosotros.
 
 ```html
 ...
 <head>
   ...
-  <script src="node_modules/jquery/dist/jquery.min.js"></script>
   <script src="node_modules/smarttable-ag/dist/main.min.js"></script>
 </head>
 ...
 ```
 
-In the file “./test.html” you can find a simple example of use, the file “./index.html” contains a slightly more robust example but we can also take a look at it. The following explanation will be based on the “./test.html” file.
+En el archivo “./test.html” puede encontrar un ejemplo simple de uso, el archivo “./index.html” contiene un ejemplo un poco más robusto pero también podemos echarle un vistazo. La siguiente explicación se basará en el archivo “./test.html”.
 
-First we will add an HTML tag of type “table”, with id called “tablefields” and a style with CSS statements that will allow us to hide said “table” from the view of the HTML document (you can remove the style for a moment to see how it looks and you can also use CSS classes if you want).
+Primero añadiremos una etiqueta HTML de tipo “table” con id llamado “tablefields” y un estilo con sentencias CSS que nos permitirá ocultar dicha “tabla” de la vista del documento HTML (puedes quitar el estilo por un momento para ver cómo queda y también puedes usar clases CSS si quieres).
 
 ```html
 ...
@@ -53,7 +52,7 @@ First we will add an HTML tag of type “table”, with id called “tablefields
 ...
 ```
 
-Now we are going to add the labels that our new “table” will contain.
+Ahora vamos a añadir las etiquetas que contendrá nuestra nueva “tabla”.
 
 ```html
 ...
@@ -88,17 +87,15 @@ Now we are going to add the labels that our new “table” will contain.
 ...
 ```
 
-The first thing we find is a “tr” tag, the algorithm takes this tag and everything it contains and adds it to the main table that we create later, it is important to put the 'data-type="data"' declaration so that the program knows that "tr" is a row of data. Inside “tr” we find common “td” tags in HTML tables, 'data-ignorefield="true"' tells the algorithm that anything inside this field when in the main table should be ignored when retrieving data from the table, 'data - input="select "' tells the algorithm that what is inside is a "select" when retrieving the data from the table (when it is in the main table), and the same goes for 'data -input="text"', 'data-input="radio"' and 'data input="checkbox"'.
+Lo primero que encontramos es una etiqueta “tr”, el algoritmo toma esta etiqueta y todo lo que contiene y lo agrega a la tabla principal que creamos luego. Es importante poner la declaración 'data-type="data"' para que el programa sabe que "tr" es una fila de datos. Dentro de “tr” encontramos etiquetas comunes “td” en tablas HTML, "data-ignorefield='true'" le dice al algoritmo que cualquier cosa dentro de este campo cuando esté en la tabla principal, debe ser ignorada al recuperar los datos de la tabla principal, "data-input='select'" le dice al algoritmo que lo que hay dentro es un "select" al recuperar los datos de la tabla (cuando está en la tabla principal) y lo mismo ocurre con "data-input='text'", "data-input='radio'" y "data-input='checkbox'". También vea que el botón dentro de "\<td data-ignorefield='true'\>" contiene la clase "smarttable-ag-delete", aquí podemos crear los botones que queramos pero el botón que contiene esta clase nos permitirá borrar el campo.
 
-Also see that the “button” inside the ‘\<td data-ignorefield="true"\>’ contains the class ‘class="smarttable-ag-delete"’. Here we can create the buttons we want, but the button that contains this class will allow us to delete the field.
-
-Now we will create our "form" where we can create the fields and buttons that we want and also include our main table as follows.
+Ahora vamos a crear nuestro formulario, donde podemos crear los campos y botones que queramos y también incluir nuestra tabla principal de la siguiente manera.
 
 ```html
 ...
 <body>
 
-  <form method="post">
+  <form method="post" onsubmit="return false;">
     <table id="table1" border="2" style="border: 2px solid;" cellspacing=1>
       <tr>
         <th colspan="7">
@@ -121,30 +118,33 @@ Now we will create our "form" where we can create the fields and buttons that we
       Add
     </button>
   </form>
-...
-```
-
-We see how our main table has an id called “table1” and common HTML tags in a table with some quirks. The '\<tr data-type="title"\>' tag is very important, because in addition to serving as a title for our table, it tells our algorithm what the data that we will retrieve will be called at the time, the statements “data-id ” contain these names.
-
-Our “form” also contains a button that, when clicked, executes the following statement “oSmartTableAg.add('#table1', '#tablefields')”. The “oSmartTableAg.add()” function is responsible for adding a new row to our main table using the “tr” from the first table we create and receives two parameters, the identifier of the main table and the identifier of the other table.
-
-Finally, we need to indicate what our main table is and we will do this by adding the following script to our HTML file, which uses the “oSmartTableAg.setEventsFromTable()” instruction.
-
-```html
-...
-  <script>
-  
-  oSmartTableAg.setEventsFromTable('#table1');
-
-  </script>
+  ...
 </body>
 ...
 ```
 
-If all goes well, you will see the changes in the browser.
+Vemos como nuestra tabla principal tiene un id llamado “tabla1” y etiquetas HTML comunes en una tabla con algunas peculiaridades. La etiqueta '\<tr data-type="title"\>' es muy importante porque además de servir como título para nuestra tabla, le dice a nuestro algoritmo cómo se llamarán los datos en el momento de recuperarlos, las declaraciones "data-id" contienen estos nombres.
 
-To obtain the data that the end user adds to the main table, we must use the statement “oSmartTableAg.getArrayFromTable()”, it receives the identifier of the main table as the only parameter as follows.
+Nuestro formulario también contiene un botón que, cuando se hace clic él, ejecuta la siguiente instrucción "oSmartTableAg.add('#table1', '#tablefields')". La función “oSmartTableAg.add()” se encarga de agregar una nueva fila a nuestra tabla principal usando el “tr” de la primera tabla que creamos y recibe dos parámetros, el identificador de la tabla principal y el identificador de la otra tabla.
+
+Finalmente, debemos indicar cuál es nuestra tabla principal y lo haremos agregando el siguiente script a nuestro archivo HTML que utiliza la instrucción “oSmartTableAg.loadTableEvents()”.
+
+```html
+...
+<script>
+    
+oSmartTableAg.loadTableEvents({
+  smarttable: ['#table1']
+});
+
+</script>
+...
+```
+
+Si todo va bien, verá los cambios en el navegador.
+
+Para obtener los datos que el usuario final agrega a la tabla principal, debemos usar la instrucción “oSmartTableAg.getArrayFromTable()”, esta recibe el identificador de la tabla principal como único parámetro de la siguiente manera.
 
 ```js
-oSmartTableAg.getArrayFromTable('#table1')
+oSmartTableAg.getArrayFromTable('#table1');
 ```
